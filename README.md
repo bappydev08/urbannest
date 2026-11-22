@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NEXORA
 
-## Getting Started
+Premium Next.js 16 ecommerce storefront with Prisma and PostgreSQL.
 
-First, run the development server:
+## Requirements
 
-```bash
+- Node.js 20+
+- PostgreSQL 14+
+- npm
+
+## Setup
+
+```powershell
+cd nexora-app
+Copy-Item .env.example .env
+npm install
+npx prisma generate
+npx prisma migrate deploy
+npm run db:seed
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+For development migrations, use `npm run db:migrate` instead of `prisma migrate deploy`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment variables
 
-## Learn More
+| Variable | Purpose |
+|---|---|
+| `DATABASE_URL` | PostgreSQL connection string |
+| `AUTH_SECRET` | Random secret of at least 32 characters |
+| `ADMIN_NAME` | Seeded admin display name |
+| `ADMIN_EMAIL` | Seeded admin email |
+| `ADMIN_PASSWORD` | Seeded admin password (12+ characters) |
+| `DELIVERY_CHARGE` | Delivery charge in BDT (default 100) |
+| `FREE_DELIVERY_MINIMUM` | Minimum subtotal for free delivery (default 3000) |
 
-To learn more about Next.js, take a look at the following resources:
+Never commit `.env` or production secrets.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## API
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `POST /api/auth/logout`
+- `GET /api/auth/me`
+- `GET /api/products`
+- `POST /api/products`
+- `PATCH /api/products/[id]`
+- `DELETE /api/products/[id]`
+- `POST /api/orders`
+- `GET /api/orders`
+- `PATCH /api/orders/[id]`
 
-## Deploy on Vercel
+Product mutations and order administration require an authenticated `ADMIN` cookie. Customer order listing is restricted to the signed-in customer.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Production
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Configure `.env` and a managed PostgreSQL database.
+2. Run `npx prisma migrate deploy`.
+3. Run `npm run db:seed`.
+4. Set a strong random `AUTH_SECRET`.
+5. Set `NODE_ENV=production` and deploy over HTTPS.
+6. Configure database backups and log/monitoring infrastructure.
+
+Cash on Delivery is the only implemented payment flow. Online payment providers require real merchant credentials and are intentionally unavailable.

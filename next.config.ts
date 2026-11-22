@@ -1,9 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   experimental: {
-    agentFeedback: true,
+    agentFeedback: false,
   },
   cacheComponents: true,
   partialPrefetching: true,
@@ -15,6 +14,11 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "images.unsplash.com" }
+    ]
+  }
 };
 
 export default nextConfig;
