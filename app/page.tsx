@@ -15,119 +15,6 @@ type Product = {
   description: string;
 };
 
-const initialProducts: Product[] = [
-  {
-    id: "demo-1",
-    name: "Premium Wireless Headphones",
-    category: "Electronics",
-    price: 2490,
-    oldPrice: 3290,
-    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=700",
-    rating: 4.8,
-    stock: 25,
-    description: "Premium wireless headphones with immersive sound and comfortable design.",
-  },
-  {
-    id: "demo-2",
-    name: "Classic Leather Backpack",
-    category: "Fashion",
-    price: 1890,
-    oldPrice: 2490,
-    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=700",
-    rating: 4.7,
-    stock: 18,
-    description: "A stylish and durable backpack for everyday adventures.",
-  },
-  {
-    id: "demo-3",
-    name: "Ceramic Coffee Set",
-    category: "Home",
-    price: 1290,
-    oldPrice: 1590,
-    image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=700",
-    rating: 4.9,
-    stock: 32,
-    description: "Beautiful ceramic coffee essentials for your home.",
-  },
-  {
-    id: "demo-4",
-    name: "Running Sneakers",
-    category: "Fashion",
-    price: 2990,
-    oldPrice: 3990,
-    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700",
-    rating: 4.8,
-    stock: 12,
-    description: "Lightweight sneakers designed for comfort and performance.",
-  },
-  {
-    id: "demo-5",
-    name: "Smart Fitness Watch",
-    category: "Electronics",
-    price: 3590,
-    oldPrice: 4290,
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700",
-    rating: 4.6,
-    stock: 20,
-    description: "Smart wearable technology for your everyday lifestyle.",
-  },
-  {
-    id: "demo-6",
-    name: "Luxury Skincare Collection",
-    category: "Beauty",
-    price: 1590,
-    oldPrice: 1990,
-    image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=700",
-    rating: 4.9,
-    stock: 15,
-    description: "A carefully curated skincare collection.",
-  },
-  { id: "demo-7", name: "Minimal Desk Lamp", category: "Home", price: 2190, oldPrice: 2790, image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=700", rating: 4.7, stock: 16, description: "Modern task lighting with a clean, compact silhouette." },
-  { id: "demo-8", name: "Everyday Travel Watch", category: "Accessories", price: 2790, oldPrice: 3490, image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=700", rating: 4.8, stock: 14, description: "A versatile watch for work, weekends and travel." },
-  { id: "demo-9", name: "Noise Cancelling Earbuds", category: "Electronics", price: 2790, oldPrice: 3590, image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=700", rating: 4.7, stock: 22, description: "Compact wireless earbuds with active noise control." },
-  { id: "demo-10", name: "Linen Summer Shirt", category: "Fashion", price: 1490, oldPrice: 1890, image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=700", rating: 4.6, stock: 27, description: "Lightweight linen shirt for warm, relaxed days." },
-  { id: "demo-11", name: "Portable Bluetooth Speaker", category: "Electronics", price: 3290, oldPrice: 3990, image: "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=700", rating: 4.8, stock: 18, description: "Rich portable sound for home and outdoor use." },
-  { id: "demo-12", name: "Leather Card Holder", category: "Accessories", price: 890, oldPrice: 1190, image: "https://images.unsplash.com/photo-1627123424574-724758594e93?w=700", rating: 4.5, stock: 35, description: "Slim genuine-leather card holder with a modern finish." },
-  { id: "demo-13", name: "Canvas Tote Bag", category: "Fashion", price: 990, oldPrice: 1290, image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=700", rating: 4.6, stock: 30, description: "A spacious everyday tote made for work and shopping." },
-  { id: "demo-14", name: "Stoneware Dinner Set", category: "Home", price: 2390, oldPrice: 2990, image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=700", rating: 4.8, stock: 11, description: "Elegant stoneware dishes for everyday dining." },
-  { id: "demo-15", name: "Hydrating Face Serum", category: "Beauty", price: 1190, oldPrice: 1490, image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=700", rating: 4.7, stock: 25, description: "A lightweight serum designed to hydrate and refresh skin." },
-  { id: "demo-16", name: "Mechanical Keyboard", category: "Electronics", price: 4490, oldPrice: 5290, image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=700", rating: 4.9, stock: 9, description: "Responsive mechanical keyboard for work and gaming." },
-  { id: "demo-17", name: "Wool Blend Coat", category: "Fashion", price: 5990, oldPrice: 7490, image: "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=700", rating: 4.8, stock: 8, description: "A tailored cold-weather coat with a premium finish." },
-  { id: "demo-18", name: "Digital Scent Diffuser", category: "Home", price: 1890, oldPrice: 2290, image: "https://images.unsplash.com/photo-1603006905003-be475563bc59?w=700", rating: 4.6, stock: 20, description: "Quiet diffuser technology for a fragrant living space." },
-  { id: "demo-19", name: "Rose Gold Sunglasses", category: "Accessories", price: 1690, oldPrice: 2190, image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=700", rating: 4.7, stock: 17, description: "Polarized sunglasses with a polished modern frame." },
-  { id: "demo-20", name: "Vitamin C Cleanser", category: "Beauty", price: 790, oldPrice: 990, image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=700", rating: 4.6, stock: 40, description: "A gentle cleanser that leaves skin fresh and balanced." },
-  { id: "demo-21", name: "4K Action Camera", category: "Electronics", price: 6490, oldPrice: 7990, image: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=700", rating: 4.8, stock: 7, description: "Capture travel and adventure footage in high resolution." },
-  { id: "demo-22", name: "Classic Denim Jacket", category: "Fashion", price: 3290, oldPrice: 3990, image: "https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?w=700", rating: 4.7, stock: 13, description: "Timeless denim with a comfortable regular fit." },
-  { id: "demo-23", name: "Sculptural Table Vase", category: "Home", price: 1390, oldPrice: 1790, image: "https://images.unsplash.com/photo-1618220179428-22790b461013?w=700", rating: 4.6, stock: 19, description: "A sculptural accent vase for shelves and tabletops." },
-  { id: "demo-24", name: "Silk Hair Scrunchies", category: "Beauty", price: 590, oldPrice: 790, image: "https://images.unsplash.com/photo-1594223274512-ad4803739b7c?w=700", rating: 4.5, stock: 50, description: "Soft silk scrunchies that reduce hair pulling." },
-  { id: "demo-25", name: "Leather Crossbody Bag", category: "Accessories", price: 2490, oldPrice: 3190, image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=700", rating: 4.8, stock: 15, description: "Compact hands-free bag with organized storage." },
-  { id: "demo-26", name: "Wireless Charging Pad", category: "Electronics", price: 1290, oldPrice: 1690, image: "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=700", rating: 4.6, stock: 29, description: "Convenient wireless charging for compatible devices." },
-  { id: "demo-27", name: "Cotton Lounge Set", category: "Fashion", price: 1790, oldPrice: 2290, image: "https://images.unsplash.com/photo-1598032895397-b9472444bf93?w=700", rating: 4.7, stock: 24, description: "A soft matching set made for relaxed indoor comfort." },
-  { id: "demo-28", name: "Bamboo Desk Organizer", category: "Home", price: 1090, oldPrice: 1390, image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=700", rating: 4.6, stock: 21, description: "Natural desk storage for notes, pens and accessories." },
-  { id: "demo-29", name: "Nourishing Lip Balm", category: "Beauty", price: 490, oldPrice: 690, image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=700", rating: 4.5, stock: 45, description: "Moisturizing everyday balm with a smooth finish." },
-  { id: "demo-30", name: "Everyday Sunglass Case", category: "Accessories", price: 690, oldPrice: 890, image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=700", rating: 4.5, stock: 38, description: "Protective hard-shell case for sunglasses and readers." },
-  { id: "demo-31", name: "Smart LED Desk Light", category: "Electronics", price: 1990, oldPrice: 2490, image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=700", rating: 4.7, stock: 23, description: "Adjustable smart lighting with multiple brightness modes." },
-  { id: "demo-32", name: "Premium Chino Pants", category: "Fashion", price: 2190, oldPrice: 2790, image: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=700", rating: 4.7, stock: 26, description: "Comfortable chinos with a clean tapered fit." },
-  { id: "demo-33", name: "Ceramic Aroma Candle", category: "Home", price: 990, oldPrice: 1290, image: "https://images.unsplash.com/photo-1603006905003-be475563bc59?w=700", rating: 4.6, stock: 36, description: "A calming scented candle in a reusable ceramic vessel." },
-  { id: "demo-34", name: "Gentle Facial Moisturizer", category: "Beauty", price: 1390, oldPrice: 1790, image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=700", rating: 4.8, stock: 28, description: "Daily lightweight moisture for soft, balanced skin." },
-  { id: "demo-35", name: "Minimal Wristband", category: "Accessories", price: 790, oldPrice: 990, image: "https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?w=700", rating: 4.5, stock: 33, description: "Simple wearable wristband for casual everyday style." },
-  { id: "demo-36", name: "Portable Power Bank", category: "Electronics", price: 1790, oldPrice: 2290, image: "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=700", rating: 4.7, stock: 31, description: "High-capacity backup power for phones and tablets." },
-  { id: "demo-37", name: "Knit Pullover Sweater", category: "Fashion", price: 2690, oldPrice: 3290, image: "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=700", rating: 4.7, stock: 17, description: "Soft knit pullover with a cozy relaxed shape." },
-  { id: "demo-38", name: "Memory Foam Cushion", category: "Home", price: 890, oldPrice: 1190, image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700", rating: 4.6, stock: 42, description: "Supportive cushion for chairs, sofas and reading corners." },
-  { id: "demo-39", name: "Natural Clay Mask", category: "Beauty", price: 1090, oldPrice: 1390, image: "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=700", rating: 4.6, stock: 34, description: "Purifying mask for refreshed and clarified skin." },
-  { id: "demo-40", name: "Stainless Steel Bottle", category: "Accessories", price: 890, oldPrice: 1190, image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=700", rating: 4.8, stock: 44, description: "Insulated bottle that keeps drinks hot or cold." },
-  { id: "demo-41", name: "Smartphone Gimbal", category: "Electronics", price: 5490, oldPrice: 6790, image: "https://images.unsplash.com/photo-1502982720700-bfff97f2ecac?w=700", rating: 4.7, stock: 10, description: "Stable smartphone mount for smooth video recording." },
-  { id: "demo-42", name: "Classic Oxford Shirt", category: "Fashion", price: 1990, oldPrice: 2490, image: "https://images.unsplash.com/photo-1603252109303-2751441dd157?w=700", rating: 4.7, stock: 28, description: "A crisp versatile shirt for smart casual dressing." },
-  { id: "demo-43", name: "Acacia Serving Board", category: "Home", price: 1190, oldPrice: 1590, image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=700", rating: 4.6, stock: 22, description: "Natural acacia board for cheese, snacks and presentation." },
-  { id: "demo-44", name: "Body Care Gift Set", category: "Beauty", price: 1890, oldPrice: 2390, image: "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?w=700", rating: 4.8, stock: 16, description: "A coordinated set of nourishing everyday body care." },
-  { id: "demo-45", name: "Braided Leather Belt", category: "Accessories", price: 1490, oldPrice: 1890, image: "https://images.unsplash.com/photo-1624222247344-550fb60583dc?w=700", rating: 4.6, stock: 20, description: "Flexible braided belt with a classic metal buckle." },
-  { id: "demo-46", name: "Compact Dash Camera", category: "Electronics", price: 3990, oldPrice: 4990, image: "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=700", rating: 4.7, stock: 12, description: "Discreet road recording with loop and motion features." },
-  { id: "demo-47", name: "Premium Polo Shirt", category: "Fashion", price: 1390, oldPrice: 1790, image: "https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=700", rating: 4.6, stock: 30, description: "Breathable polo shirt with a structured everyday fit." },
-  { id: "demo-48", name: "Foldable Laundry Hamper", category: "Home", price: 790, oldPrice: 990, image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=700", rating: 4.5, stock: 26, description: "Lightweight collapsible hamper for bedrooms and laundry rooms." },
-  { id: "demo-49", name: "Hydrating Sheet Masks", category: "Beauty", price: 690, oldPrice: 890, image: "https://images.unsplash.com/photo-1619451334792-150fd785ee74?w=700", rating: 4.7, stock: 48, description: "A set of soothing sheet masks for weekly skin refreshment." },
-  { id: "demo-50", name: "Classic Baseball Cap", category: "Accessories", price: 790, oldPrice: 990, image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=700", rating: 4.6, stock: 40, description: "Adjustable cotton cap with an embroidered finish." },
-];
-
 type CartItem = {
   product: Product;
   quantity: number;
@@ -152,10 +39,10 @@ const categories = [
   "Accessories",
 ];
 
-const money = (n: number) => "৳" + n.toLocaleString("en-BD");
+const money = (n: number) => "à§³" + n.toLocaleString("en-BD");
 
 export default function Home() {
-  const [products, setProducts] = useState(initialProducts);
+  const [products, setProducts] = useState<Product[]>([]);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [orders, setOrders] = useState<Order[]>([]);
   const [wishlist, setWishlist] = useState<string[]>([]);
@@ -166,44 +53,64 @@ export default function Home() {
   const [selected, setSelected] = useState<Product | null>(null);
   const [sort, setSort] = useState("newest");
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [user, setUser] = useState<{ id: string; name: string; email: string; role: "ADMIN" | "CUSTOMER" } | null>(null);
   const [loginMode, setLoginMode] = useState<"login" | "register" | "admin">("login");
   const [authForm, setAuthForm] = useState({ name: "", email: "", password: "" });
 
-  useEffect(() => {
-    async function load() {
-      try {
-        const [productsResponse, meResponse, ordersResponse] = await Promise.all([
-          fetch("/api/products"),
-          fetch("/api/auth/me"),
-          fetch("/api/orders"),
-        ]);
-        if (productsResponse.ok) {
-          const data = await productsResponse.json();
-          setProducts(data.products.map((product: Product & { rating?: number }) => ({
-            ...product,
-            oldPrice: product.oldPrice || product.price,
-            rating: product.rating || 5,
-          })));
-        }
-        if (meResponse.ok) {
-          const data = await meResponse.json();
-          setUser(data.user);
-        }
-        if (ordersResponse.ok) {
-          const data = await ordersResponse.json();
-          setOrders(data.orders.map((order: Order) => order));
-        }
-      } catch {
-        notify("Could not load store data.");
-      } finally {
-        setLoading(false);
-      }
-    }
+  async function loadStoreData() {
+    setLoading(true);
+    setLoadError("");
 
-    load();
+    try {
+      const [productsResponse, meResponse, ordersResponse] = await Promise.all([
+        fetch("/api/products", { cache: "no-store" }),
+        fetch("/api/auth/me", { cache: "no-store" }),
+        fetch("/api/orders", { cache: "no-store" }),
+      ]);
+
+      if (!productsResponse.ok) {
+        const data = await productsResponse.json().catch(() => null);
+        throw new Error(data?.error || "Could not load products.");
+      }
+
+      const productsData = await productsResponse.json();
+      setProducts(
+        (productsData.products as Array<Product & { rating?: number }>).map((product) => ({
+          ...product,
+          oldPrice: product.oldPrice || product.price,
+          rating: product.rating || 5,
+        }))
+      );
+
+      if (meResponse.ok) {
+        const data = await meResponse.json();
+        setUser(data.user);
+      } else {
+        setUser(null);
+      }
+
+      if (ordersResponse.ok) {
+        const data = await ordersResponse.json();
+        setOrders(data.orders);
+      } else {
+        setOrders([]);
+      }
+    } catch (error) {
+      setProducts([]);
+      setLoadError(error instanceof Error ? error.message : "Could not load store data.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      void loadStoreData();
+    }, 0);
+    return () => window.clearTimeout(timer);
   }, []);
 
   const [customer, setCustomer] = useState({
@@ -484,7 +391,7 @@ export default function Home() {
 
           <div className="flex items-center gap-4">
             <button onClick={() => setPage("wishlist")}>
-              ♡ {wishlist.length}
+              â™¡ {wishlist.length}
             </button>
 
             <button
@@ -498,7 +405,7 @@ export default function Home() {
               className="text-2xl md:hidden"
               aria-label="Toggle navigation"
             >
-              ☰
+              â˜°
             </button>
           </div>
         </div>
@@ -540,7 +447,7 @@ export default function Home() {
             onClick={() => toggleWishlist(product.id)}
             className="absolute right-3 top-3 h-10 w-10 rounded-full bg-white text-xl"
           >
-            {wishlist.includes(product.id) ? "♥" : "♡"}
+            {wishlist.includes(product.id) ? "â™¥" : "â™¡"}
           </button>
 
           <button
@@ -568,7 +475,7 @@ export default function Home() {
           </button>
 
           <p className="mt-2 text-sm text-amber-500">
-            ★★★★★ <span className="text-gray-500">{product.rating}</span>
+            â˜…â˜…â˜…â˜…â˜… <span className="text-gray-500">{product.rating}</span>
           </p>
 
           <div className="mt-2 flex items-center gap-2">
@@ -646,13 +553,28 @@ export default function Home() {
 
         <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4">
           {loading ? (
-            <p className="col-span-full py-20 text-center text-gray-500">Loading products...</p>
+            <>
+              {Array.from({ length: 8 }).map((_, index) => (
+                <div key={index} className="h-72 animate-pulse rounded-2xl bg-gray-100" />
+              ))}
+            </>
+          ) : loadError ? (
+            <div className="col-span-full rounded-2xl border border-red-200 bg-red-50 px-6 py-12 text-center">
+              <p className="font-semibold text-red-700">{loadError}</p>
+              <button
+                type="button"
+                onClick={() => void loadStoreData()}
+                className="mt-4 rounded-xl bg-red-600 px-5 py-2.5 text-sm font-semibold text-white"
+              >
+                Retry
+              </button>
+            </div>
           ) : filteredProducts.map((product) => (
             <div key={product.id}>{ProductCard({ product })}</div>
           ))}
         </div>
 
-        {!loading && filteredProducts.length === 0 && (
+        {!loading && !loadError && filteredProducts.length === 0 && (
           <p className="py-20 text-center text-gray-500">
             No products found.
           </p>
@@ -685,7 +607,7 @@ export default function Home() {
               onClick={() => setPage("shop")}
               className={`${buttonClass} mt-8`}
             >
-              Explore Collection →
+              Explore Collection â†’
             </button>
           </div>
 
@@ -732,7 +654,7 @@ export default function Home() {
             onClick={() => setPage("shop")}
             className="mt-7 rounded-full bg-white px-8 py-3 text-sm font-bold text-green-900"
           >
-            Shop Now →
+            Shop Now â†’
           </button>
         </section>
       </>
@@ -760,7 +682,7 @@ export default function Home() {
           </h1>
 
           <p className="mt-4 text-amber-500">
-            ★★★★★ <span className="text-gray-500">{selected.rating}</span>
+            â˜…â˜…â˜…â˜…â˜… <span className="text-gray-500">{selected.rating}</span>
           </p>
 
           <div className="mt-7 flex items-center gap-3">
@@ -894,7 +816,7 @@ export default function Home() {
                 onClick={() => setPage("checkout")}
                 className={`${buttonClass} mt-8 w-full`}
               >
-                Proceed to Checkout →
+                Proceed to Checkout â†’
               </button>
             </div>
           </div>
@@ -959,7 +881,7 @@ export default function Home() {
               disabled={cart.length === 0 || submitting}
               className={`${buttonClass} w-full disabled:opacity-50`}
             >
-              {submitting ? "Placing Order..." : `Place Order · ${money(total)}`}
+              {submitting ? "Placing Order..." : `Place Order Â· ${money(total)}`}
             </button>
           </form>
 
@@ -972,7 +894,7 @@ export default function Home() {
                 className="mt-5 flex justify-between gap-3 text-sm"
               >
                 <span>
-                  {item.product.name} × {item.quantity}
+                  {item.product.name} Ã— {item.quantity}
                 </span>
                 <strong>
                   {money(item.product.price * item.quantity)}
@@ -996,7 +918,7 @@ export default function Home() {
     return (
       <section className="mx-auto max-w-xl px-5 py-28 text-center">
         <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-green-100 text-4xl text-green-800">
-          ✓
+          âœ“
         </div>
 
         <h1 className="mt-7 text-3xl font-bold">
@@ -1380,7 +1302,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white text-[#17211b]">
       <div className="bg-[#173c2b] py-2 text-center text-xs text-white">
-        Free delivery on orders over ৳3,000
+        Free delivery on orders over à§³3,000
       </div>
 
       {Header()}
@@ -1425,7 +1347,7 @@ export default function Home() {
         </div>
 
         <div className="mx-auto mt-10 max-w-7xl border-t border-white/10 pt-6 text-center text-xs text-gray-500">
-          © 2026 NEXORA. All rights reserved.
+          Â© 2026 NEXORA. All rights reserved.
         </div>
       </footer>
     </main>
