@@ -83,7 +83,7 @@ export async function POST(request: Request) {
 
       return tx.order.create({
         data: {
-          orderNumber: idempotencyKey || `NX-${Date.now()}-${crypto.randomUUID().slice(0, 8)}`,
+          orderNumber: idempotencyKey || `UN-${Date.now()}-${crypto.randomUUID().slice(0, 8)}`,
           customerName: parsed.data.customerName,
           phone: parsed.data.phone,
           address: parsed.data.address,

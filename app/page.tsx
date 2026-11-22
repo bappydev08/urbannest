@@ -182,11 +182,13 @@ export default function Home() {
         ]);
         if (productsResponse.ok) {
           const data = await productsResponse.json();
-          setProducts(data.products.map((product: Product & { rating?: number }) => ({
-            ...product,
-            oldPrice: product.oldPrice || product.price,
-            rating: product.rating || 5,
-          })));
+          if (Array.isArray(data.products) && data.products.length > 0) {
+            setProducts(data.products.map((product: Product & { rating?: number }) => ({
+              ...product,
+              oldPrice: product.oldPrice || product.price,
+              rating: product.rating || 5,
+            })));
+          }
         }
         if (meResponse.ok) {
           const data = await meResponse.json();
@@ -325,7 +327,7 @@ export default function Home() {
     setSubmitting(true);
 
     try {
-      const idempotencyKey = `NX-${crypto.randomUUID()}`;
+      const idempotencyKey = `UN-${crypto.randomUUID()}`;
       const response = await fetch("/api/orders", {
         method: "POST",
         headers: {
