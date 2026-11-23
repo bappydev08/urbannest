@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "name": "Oil Control Face Wash with Salicylic Acid",
+    "category": "Skincare",
+    "price": 499,
+    "oldPrice": null,
+    "image": "/assets/product-cleanser.jpg",
+    "rating": 4.8,
+    "reviews": 125,
+    "badge": "Best Seller",
+    "description": "A gentle daily cleanser with salicylic acid to lift away excess oil and leave skin feeling fresh, clean and comfortable."
+  },
+  {
+    "id": 2,
+    "name": "10% Niacinamide Face Serum",
+    "category": "Skincare",
+    "price": 799,
+    "oldPrice": null,
+    "image": "/assets/product-serum.jpg",
+    "rating": 4.7,
+    "reviews": 200,
+    "badge": "Best Seller",
+    "description": "A lightweight niacinamide serum made to help improve the look of uneven tone and support a balanced-looking complexion."
+  },
+  {
+    "id": 3,
+    "name": "Hydra Intense Gel Moisturizer",
+    "category": "Skincare",
+    "price": 649,
+    "oldPrice": null,
+    "image": "/assets/product-moisturizer.jpg",
+    "rating": 4.8,
+    "reviews": 185,
+    "badge": "Best Seller",
+    "description": "A refreshing gel moisturizer that gives skin a soft, hydrated feel without a heavy finish."
+  },
+  {
+    "id": 4,
+    "name": "Velvet Matte Lipstick",
+    "category": "Makeup",
+    "price": 349,
+    "oldPrice": 399,
+    "image": "/assets/product-lipstick.jpg",
+    "rating": 4.6,
+    "reviews": 98,
+    "badge": "Best Seller",
+    "description": "A richly pigmented matte lipstick with a smooth, comfortable feel and an elegant velvet finish."
+  },
+  {
+    "id": 5,
+    "name": "Nourishing Body Lotion",
+    "category": "Bodycare",
+    "price": 690,
+    "oldPrice": 790,
+    "image": "/assets/product-body-lotion.jpg",
+    "rating": 4.6,
+    "reviews": 84,
+    "badge": "Sale",
+    "description": "A daily body lotion with a silky texture that leaves skin feeling soft and nourished."
+  },
+  {
+    "id": 6,
+    "name": "Gentle Daily Shampoo",
+    "category": "Haircare",
+    "price": 590,
+    "oldPrice": null,
+    "image": "/assets/product-shampoo.jpg",
+    "rating": 4.5,
+    "reviews": 72,
+    "badge": null,
+    "description": "A gentle everyday shampoo designed to cleanse hair while leaving it feeling light and refreshed."
+  },
+  {
+    "id": 7,
+    "name": "Daily Sun Shield SPF 50",
+    "category": "Sun Care",
+    "price": 790,
+    "oldPrice": null,
+    "image": "/assets/product-sunscreen.jpg",
+    "rating": 4.7,
+    "reviews": 152,
+    "badge": null,
+    "description": "A lightweight SPF 50 sunscreen for daily sun protection with a comfortable, easy-to-wear finish."
+  },
+  {
+    "id": 8,
+    "name": "Rose Petal Gift Set",
+    "category": "Gift Sets",
+    "price": 2490,
+    "oldPrice": 2990,
+    "image": "/assets/product-gift-set.jpg",
+    "rating": 4.9,
+    "reviews": 41,
+    "badge": "Gift Set",
+    "description": "A thoughtfully arranged beauty gift set, made for sharing a little everyday care."
+  }
+]
