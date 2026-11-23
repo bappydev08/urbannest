@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 const CartContext = createContext(null);
-const KEY = "velvetique-cart";
+const KEY = "urbannest-beauty-cart";
 
 function load() {
   try {
