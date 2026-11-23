@@ -1,43 +1,41 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 const CartContext = createContext(null);
-const STORAGE_KEY = "urbannest-cart";
+const KEY = "urbannest-cart";
 
-function loadCart() {
+function load() {
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) ?? [];
+    return JSON.parse(localStorage.getItem(KEY)) ?? [];
   } catch {
     return [];
   }
 }
 
 export function CartProvider({ children }) {
-  const [items, setItems] = useState(loadCart);
+  const [items, setItems] = useState(load);
 
   useEffect(() => {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+      localStorage.setItem(KEY, JSON.stringify(items));
     } catch {
-      /* storage unavailable: cart still works for this session */
+      /* storage unavailable */
     }
   }, [items]);
 
-  const addItem = (product) =>
-    setItems((prev) => {
-      const found = prev.find((i) => i.id === product.id);
-      if (found) return prev.map((i) => (i.id === product.id ? { ...i, qty: i.qty + 1 } : i));
-      return [...prev, { ...product, qty: 1 }];
-    });
-
+  const addItem = (p) =>
+    setItems((prev) =>
+      prev.some((i) => i.id === p.id)
+        ? prev.map((i) => (i.id === p.id ? { ...i, qty: i.qty + 1 } : i))
+        : [...prev, { ...p, qty: 1 }]
+    );
   const updateQty = (id, qty) =>
     setItems((prev) =>
       qty <= 0 ? prev.filter((i) => i.id !== id) : prev.map((i) => (i.id === id ? { ...i, qty } : i))
     );
-
   const removeItem = (id) => setItems((prev) => prev.filter((i) => i.id !== id));
 
-  const count = useMemo(() => items.reduce((sum, i) => sum + i.qty, 0), [items]);
-  const total = useMemo(() => items.reduce((sum, i) => sum + i.qty * i.price, 0), [items]);
+  const count = useMemo(() => items.reduce((s, i) => s + i.qty, 0), [items]);
+  const total = useMemo(() => items.reduce((s, i) => s + i.qty * i.price, 0), [items]);
 
   return (
     <CartContext.Provider value={{ items, addItem, updateQty, removeItem, count, total }}>
@@ -48,6 +46,6 @@ export function CartProvider({ children }) {
 
 export function useCart() {
   const ctx = useContext(CartContext);
-  if (!ctx) throw new Error("useCart must be used inside CartProvider");
+  if (!ctx) throw new Error("useCart must be inside CartProvider");
   return ctx;
 }

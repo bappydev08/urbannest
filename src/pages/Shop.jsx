@@ -1,86 +1,71 @@
 import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import products from "../data/products.json";
 import ProductCard from "../components/ProductCard.jsx";
 
-const categories = ["All", "Electronics", "Fashion", "Home", "Beauty", "Accessories"];
-const sorts = [
-  { value: "newest", label: "Newest" },
-  { value: "price-asc", label: "Price: Low to High" },
-  { value: "price-desc", label: "Price: High to Low" },
-  { value: "name", label: "Name: A to Z" },
-];
+const categories = ["All", "Cleansers", "Serums", "Moisturizers", "Sun Care", "Body Care", "Gift Sets"];
 
 export default function Shop() {
   const [params, setParams] = useSearchParams();
-  const [sort, setSort] = useState("newest");
+  const [sort, setSort] = useState("featured");
   const active = params.get("category") || "All";
 
   const list = useMemo(() => {
-    const filtered = active === "All" ? products : products.filter((p) => p.category === active);
-    const sorted = [...filtered];
-    if (sort === "price-asc") sorted.sort((a, b) => a.price - b.price);
-    if (sort === "price-desc") sorted.sort((a, b) => b.price - a.price);
-    if (sort === "name") sorted.sort((a, b) => a.name.localeCompare(b.name));
-    return sorted;
+    const base = active === "All" ? products : products.filter((p) => p.category === active);
+    const arr = [...base];
+    if (sort === "price-asc") arr.sort((a, b) => a.price - b.price);
+    if (sort === "price-desc") arr.sort((a, b) => b.price - a.price);
+    if (sort === "rating") arr.sort((a, b) => b.rating - a.rating);
+    return arr;
   }, [active, sort]);
 
-  const setCategory = (c) => setParams(c === "All" ? {} : { category: c });
-
   return (
-    <div className="mx-auto max-w-7xl px-5 py-16 md:px-8">
-      <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-xs uppercase tracking-[0.25em] text-muted">
-        Our collection
-      </motion.p>
-      <h1 className="mt-3 font-display text-5xl font-bold md:text-6xl">Shop</h1>
+    <div className="mx-auto max-w-7xl px-5 py-20 md:px-8">
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-mauve">Our collection</p>
+        <h1 className="mt-3 font-display text-6xl font-semibold text-plum">Shop</h1>
+      </motion.div>
 
-      <div className="mt-10 flex flex-col gap-6 border-b border-black/10 pb-6 md:flex-row md:items-center md:justify-between">
+      <div className="mt-12 flex flex-col gap-6 border-b border-line pb-6 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-wrap gap-2">
           {categories.map((c) => (
             <button
               key={c}
-              onClick={() => setCategory(c)}
-              className={`relative rounded-full px-5 py-2 text-sm font-medium transition-colors ${
-                active === c ? "text-cream" : "hover:bg-black/5"
+              onClick={() => setParams(c === "All" ? {} : { category: c })}
+              className={`rounded-full border px-5 py-2 text-xs font-semibold uppercase tracking-wider transition-colors ${
+                active === c ? "border-mauve bg-mauve text-cream" : "border-line hover:border-mauve"
               }`}
             >
-              {active === c && (
-                <motion.span layoutId="chip" className="absolute inset-0 rounded-full bg-ink" transition={{ type: "spring", stiffness: 380, damping: 30 }} />
-              )}
-              <span className="relative">{c}</span>
+              {c}
             </button>
           ))}
         </div>
         <select
           value={sort}
           onChange={(e) => setSort(e.target.value)}
-          className="rounded-full border border-black/15 bg-transparent px-4 py-2 text-sm outline-none"
+          className="rounded-md border border-line bg-cream px-4 py-2.5 text-sm outline-none focus:border-mauve"
         >
-          {sorts.map((s) => (
-            <option key={s.value} value={s.value}>{s.label}</option>
-          ))}
+          <option value="featured">Featured</option>
+          <option value="rating">Top rated</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
         </select>
       </div>
 
-      <motion.div layout className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
-        <AnimatePresence>
-          {list.map((p) => (
-            <motion.div
-              key={p.id}
-              layout
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.4 }}
-            >
-              <ProductCard product={p} />
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </motion.div>
-
-      {list.length === 0 && <p className="mt-16 text-center text-muted">Ei category te ekhono product nei.</p>}
+      <div className="mt-12 grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4">
+        {list.map((p, i) => (
+          <motion.div
+            key={p.id}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: Math.min(i * 0.05, 0.4), ease: [0.22, 1, 0.36, 1] }}
+          >
+            <ProductCard product={p} />
+          </motion.div>
+        ))}
+      </div>
+      {list.length === 0 && <p className="mt-20 text-center text-muted">Ei category te ekhono product nei.</p>}
     </div>
   );
 }

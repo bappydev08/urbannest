@@ -1,12 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cream: #f5f3ef;
-  --color-ink: #111111;
-  --color-muted: #6b6b6b;
-  --color-accent: #8a6a3d;
+  --color-cream: #fbf6f4;
+  --color-blush: #f3e3e5;
+  --color-line: #ead9dd;
+  --color-rose: #b8677a;
+  --color-mauve: #9c5a6e;
+  --color-plum: #5c2d41;
+  --color-ink: #2e1b25;
+  --color-muted: #7a6670;
   --font-sans: "Inter", "Hind Siliguri", system-ui, sans-serif;
-  --font-display: "Playfair Display", serif;
+  --font-display: "Cormorant Garamond", "Hind Siliguri", serif;
 }
 
 html {
@@ -16,10 +20,7 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
-html.lenis, html.lenis body { height: auto; }
-.lenis.lenis-smooth { scroll-behavior: auto !important; }
-
-::selection { background: var(--color-ink); color: var(--color-cream); }
+::selection { background: var(--color-mauve); color: var(--color-cream); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

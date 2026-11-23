@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Lenis from "lenis";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
@@ -11,12 +11,14 @@ import Cart from "./pages/Cart.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 
-function useSmoothScroll() {
+export default function App() {
+  const location = useLocation();
+
   useEffect(() => {
-    const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    const lenis = new Lenis({ duration: 1.2 });
     let frame;
-    const raf = (time) => {
-      lenis.raf(time);
+    const raf = (t) => {
+      lenis.raf(t);
       frame = requestAnimationFrame(raf);
     };
     frame = requestAnimationFrame(raf);
@@ -25,11 +27,6 @@ function useSmoothScroll() {
       lenis.destroy();
     };
   }, []);
-}
-
-export default function App() {
-  const location = useLocation();
-  useSmoothScroll();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -41,10 +38,10 @@ export default function App() {
       <AnimatePresence mode="wait">
         <motion.main
           key={location.pathname}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -16 }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
         >
           <Routes location={location}>
             <Route path="/" element={<Home />} />
